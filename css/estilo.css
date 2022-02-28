@@ -23,3 +23,14 @@ nav{
     right:0;
     top:25%;
 }
+
+/*Main*/
+main{
+    margin-top:1.5em;
+}
+
+main h1{
+    font-family:Pacifico;
+    text-align:center;
+    color:#EA5E57;
+}
