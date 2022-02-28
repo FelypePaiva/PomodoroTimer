@@ -1,1 +1,25 @@
 *{margin:0;padding:0;box-sizing:border-box}
+
+header, main, footer{
+    margin:0 2em;
+    position:relative;
+}
+
+/*Header*/
+header{
+    
+}
+.conteiner{
+    box-shadow:0px 1px #888888;
+}
+nav{
+    display:none
+}
+.logo, .bar{
+    display:inline-block;
+}
+.bar{
+    position:absolute;
+    right:0;
+    top:25%;
+}
