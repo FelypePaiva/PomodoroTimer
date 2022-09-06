@@ -34,7 +34,30 @@ main h1{
     text-align:center;
     color:#EA5E57;
 }
+.cursorPointer{
+    cursor: pointer;
+}
+#acaoAtual{
 
+}
+#seta{
+    position:absolute!important;
+    transform-origin: center!important;
+    transform: rotate(90deg);
+    color:blue;
+}
+#acoesDisponiveis{
+    font-family:Pacifico;
+    text-align:center;
+    color:#EA5E57;
+    display:none;
+}
+#acoesDisponiveis ul{
+    list-style: none;
+}
+#acoesDisponiveis li span:hover{
+    border-bottom:.2rem solid #EA5E57;
+}
 /*Progresso*/
 .progresso{
     position:relative;

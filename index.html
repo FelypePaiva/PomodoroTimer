@@ -20,8 +20,18 @@
         </header>
     </div>
         <main>
-            <h1>Pomodoro</h1>
-
+            <h1 id="acaoAtual" class="cursorPointer">Pomodoro <span id="seta">&rsaquo;</span></h1>
+            <div id="acoesDisponiveis">
+                <ul>
+                    <li><span id="acaoItem" class="cursorPointer">Pomodoro</span></li>
+                    <li><span id="acaoItem" class="cursorPointer">Pausa</span></li>
+                    <li><span id="acaoItem" class="cursorPointer">Pausa Longa</span></li>
+                </ul>
+            </div>
+            <h2 id="tempo"></h2>
+            <button id="play">play</button>
+            <button id="pause">Pause</button>
+            <button id="stop">Stop</button>
         </main>
 
     <script src="js/jquery.js"></script>
