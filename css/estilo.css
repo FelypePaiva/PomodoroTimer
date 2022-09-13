@@ -41,10 +41,10 @@ main h1{
 
 }
 #seta{
-    position:absolute!important;
+    /* position:absolute!important;
     transform-origin: center!important;
-    transform: rotate(90deg);
-    color:blue;
+    transform: rotate(90deg); 
+    color:blue;*/
 }
 #acoesDisponiveis{
     font-family:Pacifico;
