@@ -126,3 +126,6 @@ main h1{
 .btn:hover{
     cursor:pointer;
 }
+#pause{
+    display:none;
+}

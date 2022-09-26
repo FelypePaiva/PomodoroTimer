@@ -24,16 +24,31 @@ var tempoOcorrido = {
     tempo: [0,0]
 }
 tempo.textContent = converterEmTempo();
-
+atualizarProgressBar();
 btnPlay.addEventListener("click", function(){
-    intervalo = setInterval(decrementarTempo,1000)
+    intervalo = setInterval(decrementarTempo,100)
+    mostrarBotao("pause");
 })
 btnPause.addEventListener("click",function(){
-    btnPlay.removeAttribute("disabled");
+    mostrarBotao("play");
     clearInterval(intervalo)
 })
-btnStop.addEventListener("click",function(){tempo.textContent = acaoAtual.default;})
+btnStop.addEventListener("click",function(){
+    acaoAtual.tempo[0] = acaoAtual.default[0];
+    acaoAtual.tempo[1] = acaoAtual.default[1];
+    tempoOcorrido = {tempo:[0,0]}
+    printarTempo();
+    atualizarProgressBar();
+    //tempo.textContent = acaoAtual.default;
+    mostrarBotao("play");
+    clearInterval(intervalo)
+})
 function decrementarTempo(){
+    if(acaoAtual.tempo[0] <= 0 && acaoAtual.tempo[1] <= 0){
+        //alert("Tempo Esgotado");
+        clearInterval(intervalo);
+        return;
+    }
     if(acaoAtual.tempo[1] != 0){
         acaoAtual.tempo[1]--;
     }
@@ -42,14 +57,8 @@ function decrementarTempo(){
         acaoAtual.tempo[0]--;
     }
     incrementaTempoOcorrido();
-    btnPlay.setAttribute("disabled","disabled");
-    console.log(acaoAtual.tempo)
     printarTempo();
     atualizarProgressBar();
-    if(acaoAtual.tempo[0] <= 0 && acaoAtual.tempo[1] <= 0){
-        //alert("Tempo Esgotado");
-        clearInterval(intervalo);
-    }
 }
 function incrementaTempoOcorrido(){
     if(tempoOcorrido.tempo[1] != 59){
@@ -140,4 +149,13 @@ function atualizarProgressBar(){
     let graus = TempoEmDeg();
     el.style.background = `conic-gradient(#8CD4A2 ${graus}deg, #eee 0deg)`;
     console.log(graus);
+}
+function mostrarBotao(botao){
+    if(botao == "play"){
+        document.getElementById("play").style.display = "inline-block";
+        document.getElementById("pause").style.display = "none";
+    }else if(botao == "pause"){
+        document.getElementById("play").style.display = "none";
+        document.getElementById("pause").style.display = "inline-block";
+    }
 }
