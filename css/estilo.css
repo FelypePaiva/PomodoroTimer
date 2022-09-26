@@ -117,3 +117,12 @@ main h1{
     transform:translate(-50%,-50%);
 
 }
+.center{
+    width:max-content;
+    margin:0 auto;
+    margin-top:2rem;
+}
+
+.btn:hover{
+    cursor:pointer;
+}
