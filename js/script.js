@@ -20,10 +20,13 @@ var pausaLonga = {
 }
 
 var acaoAtual = pomodoro;
+var tempoOcorrido = {
+    tempo: [0,0]
+}
 tempo.textContent = converterEmTempo();
 
 btnPlay.addEventListener("click", function(){
-    intervalo = setInterval(decrementarTempo,10)
+    intervalo = setInterval(decrementarTempo,1000)
 })
 btnPause.addEventListener("click",function(){
     btnPlay.removeAttribute("disabled");
@@ -38,12 +41,23 @@ function decrementarTempo(){
         acaoAtual.tempo[1] = 59;
         acaoAtual.tempo[0]--;
     }
+    incrementaTempoOcorrido();
     btnPlay.setAttribute("disabled","disabled");
     console.log(acaoAtual.tempo)
     printarTempo();
+    atualizarProgressBar();
     if(acaoAtual.tempo[0] <= 0 && acaoAtual.tempo[1] <= 0){
         //alert("Tempo Esgotado");
         clearInterval(intervalo);
+    }
+}
+function incrementaTempoOcorrido(){
+    if(tempoOcorrido.tempo[1] != 59){
+        tempoOcorrido.tempo[1]++;
+    }
+    else{
+        tempoOcorrido.tempo[1] = 0;
+        tempoOcorrido.tempo[0]++;
     }
 }
 function printarTempo(){
@@ -56,6 +70,10 @@ function converterEmTempo(){
     tempo += ":";
     tempo += acaoAtual.tempo[1].toString().padStart(2, "0");
     return tempo;
+}
+function getSegundos(tempo){
+    let segundos = (tempo[0] * 60) + tempo[1];
+    return segundos;
 }
 
 
@@ -104,6 +122,22 @@ function alterarAcaoAtual(event){
     acaoAtual = acao;
     printarTempo();
     mostrarOpcoes();
+    tempoOcorrido.tempo = [0,0];
 
 }
 //#endregion
+
+
+function TempoEmDeg(){
+    let tempoBase = getSegundos(acaoAtual.default);
+    let minutosOcorridos = getSegundos(tempoOcorrido.tempo);
+    let timeDeg = (360 * minutosOcorridos) / tempoBase;
+    return timeDeg;
+}
+
+function atualizarProgressBar(){
+    let el = document.querySelector(".externo");
+    let graus = TempoEmDeg();
+    el.style.background = `conic-gradient(#8CD4A2 ${graus}deg, #eee 0deg)`;
+    console.log(graus);
+}

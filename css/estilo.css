@@ -30,6 +30,7 @@ main{
 }
 
 main h1{
+    font-size:2.5em;
     font-family:Pacifico;
     text-align:center;
     color:#EA5E57;
@@ -75,4 +76,44 @@ main h1{
     font-family:Pacifico;
     color:#EA5E57;
     font-size:3em;
+}
+/*LOADING CIRCLE*/
+.loading{
+    margin:auto;
+    max-width:min-content;
+}
+.circulo{
+
+}
+.interno, .externo{
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    position:relative;
+}
+.interno{
+    width:250px;
+    height:250px;
+    background-color:white;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+.externo{
+    background-color:#8CD4A2;
+    background:conic-gradient(#8CD4A2 320deg, #eee 0deg);
+}
+
+#tempo{
+    font-family:Pacifico;
+    font-size:3.5rem;;
+    font-weight: bolder ;
+    color:#EA5E57;
+    position: relative;
+    top:50%;
+    left:50%;
+    width:min-content;
+    transform:translate(-50%,-50%);
+
 }
