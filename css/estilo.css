@@ -1,7 +1,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 
 header, main, footer{
-    margin:0 2em;
+    margin:0 5em;
     position:relative;
 }
 
@@ -9,6 +9,29 @@ header, main, footer{
 header{
     
 }
+
+nav{
+    position:absolute;
+    top:50%;
+    right:0;   
+    transform:translateY(-50%);
+}
+
+nav ul{
+    list-style:none;
+}
+
+nav li{
+    display:inline-block;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#EA5E57;
+    font-family:Pacifico;
+    font-size:1.5rem;
+}
+
 .titulo{
     font-family: Pacifico;
     font-size:2rem;
@@ -141,4 +164,8 @@ main h1{
 }
 @media screen and (min-width: 480px) {
     .titulo{display:inline; margin-left:.5rem}
+    .bar{display:none}
+    nav{
+        display:block;
+    }
   }
