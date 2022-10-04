@@ -1,7 +1,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 
 header, main, footer{
-    margin:0 5em;
+    margin:0 2em;
     position:relative;
 }
 
@@ -167,5 +167,8 @@ main h1{
     .bar{display:none}
     nav{
         display:block;
+    }
+    header, main, footer{
+        margin:0 5em;
     }
   }
