@@ -18,6 +18,8 @@ var pausaLonga = {
     tempo: [15,0],
     default: [15,0]
 }
+var indiceLista = 0;
+var opcoesList = [pomodoro, pausa, pausaLonga];
 
 var acaoAtual = pomodoro;
 var tempoOcorrido = {
@@ -91,13 +93,21 @@ function getSegundos(tempo){
 //#region Evento de Clique no titulo
 var titulo = document.getElementById("acaoAtual");
 var listaOpcoes = document.getElementById("acoesDisponiveis");
-titulo.addEventListener("click", mostrarOpcoes);
+titulo.addEventListener("click", alternarOpcao);
 function mostrarOpcoes(){
     if(listaOpcoes.style.display == "none" || listaOpcoes.style.display == "")
         listaOpcoes.style.display = "block";
     else
         listaOpcoes.style.display = "none";
 
+}
+function alternarOpcao(){
+    if(indiceLista < opcoesList.length - 1){
+        alterarAcaoAtual(++indiceLista);
+    }else{
+        indiceLista = 0;
+        alterarAcaoAtual(indiceLista);
+    }
 }
 
 var itensAcao = document.getElementsByClassName("acaoItem");
@@ -124,15 +134,23 @@ function alterarAcaoAtual(event){
             acao = pomodoro;
         break;
     }
+
     document.getElementById("acaoAtualNome").textContent = acao.nome;
     //console.log("clicado em " + opcaoSelecionada);
-
+    
     console.table(acao);
     acaoAtual = acao;
     printarTempo();
     mostrarOpcoes();
     tempoOcorrido.tempo = [0,0];
-
+    
+}
+function alterarAcaoAtual(i){
+    let acao = opcoesList[i];
+    acaoAtual = acao;
+    document.getElementById("acaoAtualNome").textContent = acao.nome;
+    printarTempo();
+    tempoOcorrido.tempo = [0,0];
 }
 //#endregion
 
