@@ -47,7 +47,7 @@ btnStop.addEventListener("click",function(){
 })
 function decrementarTempo(){
     if(acaoAtual.tempo[0] <= 0 && acaoAtual.tempo[1] <= 0){
-        //alert("Tempo Esgotado");
+        alternarOpcao();
         clearInterval(intervalo);
         return;
     }
@@ -102,12 +102,15 @@ function mostrarOpcoes(){
 
 }
 function alternarOpcao(){
+    acaoAtual.tempo[0] = acaoAtual.default[0];
+    acaoAtual.tempo[1] = acaoAtual.default[1];
     if(indiceLista < opcoesList.length - 1){
         alterarAcaoAtual(++indiceLista);
     }else{
         indiceLista = 0;
         alterarAcaoAtual(indiceLista);
     }
+    mostrarBotao("play");
 }
 
 var itensAcao = document.getElementsByClassName("acaoItem");
